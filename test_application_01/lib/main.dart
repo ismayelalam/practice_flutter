@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:test_application_01/screens/home/home.dart';
+import 'package:test_application_01/theme.dart';
 
 void main() {
-  runApp(const MaterialApp(home: Home()));
+  runApp(MaterialApp(theme: primaryTheme, home: Home()));
 }
 
 class SandBox extends StatelessWidget {
