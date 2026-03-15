@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:test_application_01/models/character.dart';
 import 'package:test_application_01/models/vocation.dart';
 import 'package:test_application_01/screens/create/vocation_card.dart';
 import 'package:test_application_01/shared/styled_button.dart';
 import 'package:test_application_01/shared/styled_text.dart';
 import 'package:test_application_01/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:uuid/uuid.dart';
+
+var uuid = const Uuid();
 
 class Create extends StatefulWidget {
   const Create({super.key});
@@ -34,13 +38,19 @@ class _CreateState extends State<Create> {
 
   void submitHandler() {
     if (_nameController.text.trim().isEmpty) {
-      print("Name must not be empty");
       return;
     }
     if (_sloganController.text.trim().isEmpty) {
-      print("Slogan must not be empty");
       return;
     }
+    characters.add(
+      Character(
+        id: uuid.v4(),
+        name: _nameController.text,
+        slogan: _sloganController.text,
+        vocation: selectedVocation,
+      ),
+    );
   }
 
   @override
@@ -109,6 +119,7 @@ class _CreateState extends State<Create> {
                 selected: selectedVocation == Vocation.wizard,
                 onTap: updateVocation,
               ),
+
               Center(
                 child: StyledButton(
                   onPressed: submitHandler,
