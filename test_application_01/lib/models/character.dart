@@ -1,3 +1,4 @@
+import 'package:test_application_01/models/skills.dart';
 import 'package:test_application_01/models/stats.dart';
 import 'package:test_application_01/models/vocation.dart';
 
@@ -5,6 +6,7 @@ class Character with Stats {
   final String name;
   final String slogan;
   final String id;
+  final Set<Skill> skills = {};
   final Vocation vocation;
   bool _isFav = false;
 
@@ -19,5 +21,10 @@ class Character with Stats {
 
   void toggleIsFav() {
     _isFav = !_isFav;
+  }
+
+  void updateSkill(Skill skill) {
+    skills.clear();
+    skills.add(skill);
   }
 }
