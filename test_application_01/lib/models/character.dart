@@ -1,4 +1,6 @@
-class Character {
+import 'package:test_application_01/models/stats.dart';
+
+class Character with Stats {
   final String name;
   final String slogan;
   final String id;
