@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:test_application_01/models/vocation.dart';
+import 'package:test_application_01/screens/create/vocation_card.dart';
+import 'package:test_application_01/shared/styled_button.dart';
 import 'package:test_application_01/shared/styled_text.dart';
 import 'package:test_application_01/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,6 +22,17 @@ class _CreateState extends State<Create> {
     _nameController.dispose();
     _sloganController.dispose();
     super.dispose();
+  }
+
+  void submitHandler() {
+    if (_nameController.text.trim().isEmpty) {
+      print("Name must not be empty");
+      return;
+    }
+    if (_sloganController.text.trim().isEmpty) {
+      print("Slogan must not be empty");
+      return;
+    }
   }
 
   @override
@@ -61,6 +75,24 @@ class _CreateState extends State<Create> {
               ),
               cursorColor: AppColors.textColor,
               controller: _sloganController,
+            ),
+            const SizedBox(height: 20),
+
+            Center(child: Icon(Icons.code, color: AppColors.primaryColor)),
+            const Center(child: StyledHeading("choose a vocation")),
+            const Center(
+              child: StyledText("This determines your available skills"),
+            ),
+            const SizedBox(height: 30),
+            const VocationCard(vocation: Vocation.junkie),
+            const VocationCard(vocation: Vocation.ninja),
+            const VocationCard(vocation: Vocation.raider),
+            const VocationCard(vocation: Vocation.wizard),
+            Center(
+              child: StyledButton(
+                onPressed: submitHandler,
+                child: StyledHeading('create character'),
+              ),
             ),
           ],
         ),
