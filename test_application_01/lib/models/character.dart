@@ -8,6 +8,8 @@ class Character with Stats {
 
   Character({required this.name, required this.slogan, required this.id});
 
+  bool get isFav => _isFav;
+
   void toggleIsFav() {
     _isFav = !_isFav;
   }
