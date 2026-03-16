@@ -39,9 +39,43 @@ class _CreateState extends State<Create> {
 
   void submitHandler() {
     if (_nameController.text.trim().isEmpty) {
+      showDialog(
+        context: context,
+        builder: (ctx) {
+          return AlertDialog(
+            title: StyledHeading("Missing Name"),
+            content: StyledText("Every good RGP character need a unique name."),
+            actions: [
+              StyledButton(
+                onPressed: () => Navigator.pop(ctx),
+                child: const StyledHeading("close"),
+              ),
+            ],
+            actionsAlignment: MainAxisAlignment.center,
+          );
+        },
+      );
       return;
     }
     if (_sloganController.text.trim().isEmpty) {
+      showDialog(
+        context: context,
+        builder: (ctx) {
+          return AlertDialog(
+            title: StyledHeading("Missing Slogan"),
+            content: StyledText(
+              "Every good RGP character need a unique slogan.",
+            ),
+            actions: [
+              StyledButton(
+                onPressed: () => Navigator.pop(ctx),
+                child: const StyledHeading("close"),
+              ),
+            ],
+            actionsAlignment: MainAxisAlignment.center,
+          );
+        },
+      );
       return;
     }
     characters.add(
