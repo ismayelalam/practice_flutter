@@ -15,7 +15,7 @@ mixin Stats {
   };
 
   List<Map<String, String>> get statsAsList => [
-    {"title": "Health", 'value': _health.toString()},
+    {"title": "health", 'value': _health.toString()},
     {"title": "attach", 'value': _attach.toString()},
     {"title": "defense", 'value': _defense.toString()},
     {"title": "skill", 'value': _skill.toString()},
@@ -38,6 +38,7 @@ mixin Stats {
           break;
         default:
       }
+      _points--;
     }
   }
 

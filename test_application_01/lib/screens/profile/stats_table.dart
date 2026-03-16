@@ -37,6 +37,59 @@ class _StatsTableState extends State<StatsTable> {
               ],
             ),
           ),
+
+          Table(
+            children: widget.character.statsAsList
+                .map(
+                  (stat) => TableRow(
+                    decoration: BoxDecoration(
+                      color: AppColors.secondaryColor.withValues(alpha: 0.5),
+                    ),
+                    children: [
+                      TableCell(
+                        verticalAlignment: TableCellVerticalAlignment.middle,
+                        child: Padding(
+                          padding: EdgeInsetsGeometry.all(8),
+                          child: StyledHeading(stat['title']!),
+                        ),
+                      ),
+                      TableCell(
+                        verticalAlignment: TableCellVerticalAlignment.middle,
+                        child: Padding(
+                          padding: EdgeInsetsGeometry.all(8),
+                          child: StyledHeading(stat['value']!),
+                        ),
+                      ),
+                      TableCell(
+                        verticalAlignment: TableCellVerticalAlignment.middle,
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.arrow_upward,
+                            color: AppColors.textColor,
+                          ),
+                          onPressed: () => setState(() {
+                            widget.character.increaseStat(stat['title']!);
+                          }),
+                        ),
+                      ),
+
+                      TableCell(
+                        verticalAlignment: TableCellVerticalAlignment.middle,
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.arrow_downward,
+                            color: AppColors.textColor,
+                          ),
+                          onPressed: () => setState(() {
+                            widget.character.decreaseStat(stat['title']!);
+                          }),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+                .toList(),
+          ),
         ],
       ),
     );
