@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_application_01/models/character.dart';
+import 'package:test_application_01/screens/create/create.dart';
 import 'package:test_application_01/screens/home/character_card.dart';
 import 'package:test_application_01/shared/styled_button.dart';
 import 'package:test_application_01/shared/styled_text.dart';
@@ -29,7 +30,15 @@ class _HomeState extends State<Home> {
               ),
             ),
             // Image.asset("assets/test.jpeg"),
-            StyledButton(onPressed: () {}, child: const StyledHeading('data')),
+            StyledButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (ctx) => Create()),
+                );
+              },
+              child: const StyledHeading('Create new Character'),
+            ),
           ],
         ),
       ),

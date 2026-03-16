@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:test_application_01/models/character.dart';
 import 'package:test_application_01/models/vocation.dart';
 import 'package:test_application_01/screens/create/vocation_card.dart';
+import 'package:test_application_01/screens/home/home.dart';
 import 'package:test_application_01/shared/styled_button.dart';
 import 'package:test_application_01/shared/styled_text.dart';
 import 'package:test_application_01/theme.dart';
@@ -51,6 +52,8 @@ class _CreateState extends State<Create> {
         vocation: selectedVocation,
       ),
     );
+
+    Navigator.push(context, MaterialPageRoute(builder: (ctx) => const Home()));
   }
 
   @override
