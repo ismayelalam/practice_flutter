@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:test_application_01/models/character.dart';
+import 'package:test_application_01/screens/profile/skill_list.dart';
 import 'package:test_application_01/screens/profile/stats_table.dart';
+import 'package:test_application_01/shared/styled_button.dart';
 import 'package:test_application_01/shared/styled_text.dart';
 import 'package:test_application_01/theme.dart';
 
@@ -68,8 +70,26 @@ class Profile extends StatelessWidget {
 
             Container(
               alignment: Alignment.center,
-              child: Column(children: [StatsTable(character)]),
+              child: Column(
+                children: [StatsTable(character), SkillList(character)],
+              ),
             ),
+            Center(
+              child: StyledButton(
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: const StyledHeading("Character was saved"),
+                      showCloseIcon: true,
+                      duration: const Duration(seconds: 2),
+                      backgroundColor: AppColors.secondaryColor,
+                    ),
+                  );
+                },
+                child: StyledHeading('Save character'),
+              ),
+            ),
+            const SizedBox(height: 20),
           ],
         ),
       ),
